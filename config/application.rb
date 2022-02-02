@@ -1,5 +1,5 @@
 require_relative "boot"
-
+require 'rack/cors'
 require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
@@ -25,5 +25,12 @@ module Api
     config.api_only = true
 
     config.logger = Logger.new(STDOUT)
+
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :delete, :put, :options]
+      end
+    end
   end
 end

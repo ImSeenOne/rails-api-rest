@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   def deleted_at
-    return @deleted_at
+    @deleted_at
   end
 
   def set_deleted_at(d_at)
